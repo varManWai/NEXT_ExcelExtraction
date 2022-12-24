@@ -54,10 +54,10 @@ export default function Home() {
           </tr>
         </thead>
         <tbody>
-          {items.map((d) => (
-            <tr key={d.name}>
-              <th>{d.name}</th>
-              <td>{d.email}</td>
+          {items.map((data) => (
+            <tr key={data.name}>
+              <th>{data.name}</th>
+              <td>{data.email}</td>
             </tr>
           ))}
         </tbody>
