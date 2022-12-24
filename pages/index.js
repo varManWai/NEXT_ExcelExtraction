@@ -16,20 +16,29 @@ export default function Home() {
 
         const wsname = wb.SheetNames[0];
 
+        console.log(wsname);
+
         const ws = wb.Sheets[wsname];
+        
+        console.log(ws);
 
         const data = XLSX.utils.sheet_to_json(ws);
 
-        data.map((d) => {
-          setItems([...items, d]);
-        });
+        console.log(data);
 
+        data.map((d)=>{
+          setItems([...items,d]);
+        })
+
+        resolve(data);
       };
 
       fileReader.onerror = (error) => {
         reject(error);
       };
     });
+
+    
 
     promise.then((d) => {
       setItems(d);
@@ -38,6 +47,9 @@ export default function Home() {
 
   return (
     <div>
+      {console.log("1111111111111111111111")}
+      {console.log(items)}
+      {console.log("3333333333333333333333")}
       <input
         type="file"
         onChange={(e) => {
@@ -54,10 +66,10 @@ export default function Home() {
           </tr>
         </thead>
         <tbody>
-          {items.map((data) => (
-            <tr key={data.name}>
-              <th>{data.name}</th>
-              <td>{data.email}</td>
+          {items.map((d) => (
+            <tr key={d.name}>
+              <th>{d.name}</th>
+              <td>{d.email}</td>
             </tr>
           ))}
         </tbody>
