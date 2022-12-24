@@ -44,6 +44,34 @@ export default function Home() {
   };
 
   return (
-   
+    <div>
+      {console.log("1111111111111111111111")}
+      {console.log(items)}
+      {console.log("3333333333333333333333")}
+      <input
+        type="file"
+        onChange={(e) => {
+          const file = e.target.files[0];
+          readExcel(file);
+        }}
+      />
+
+      <table className="table container">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {items.map((d) => (
+            <tr key={d.name}>
+              <th>{d.name}</th>
+              <td>{d.email}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
