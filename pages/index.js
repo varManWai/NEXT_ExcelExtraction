@@ -16,21 +16,14 @@ export default function Home() {
 
         const wsname = wb.SheetNames[0];
 
-        console.log(wsname);
-
         const ws = wb.Sheets[wsname];
 
-        console.log(ws);
-
         const data = XLSX.utils.sheet_to_json(ws);
-
-        console.log(data);
 
         data.map((d) => {
           setItems([...items, d]);
         });
 
-        resolve(data);
       };
 
       fileReader.onerror = (error) => {
@@ -45,9 +38,6 @@ export default function Home() {
 
   return (
     <div>
-      {console.log("1111111111111111111111")}
-      {console.log(items)}
-      {console.log("3333333333333333333333")}
       <input
         type="file"
         onChange={(e) => {
